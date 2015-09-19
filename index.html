@@ -15,7 +15,23 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <p>HI</p>
+    <div id="container">
+    </div>
+     <script id='template' type='text/ractive'>
+      {{#user.id}}
+        <p>Here is your list!</p>
+      {{/user.id}}
+      {{^user.id}}
+        <p>What have you been listening to?</p>
+        <ul>
+          <ul>
+          {{#each shows}}
+            <li>{{.}}</li>
+          {{/each}}
+          </ul>
+        </ul>
+      {{/user.id}}
+      </script>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
