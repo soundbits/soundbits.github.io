@@ -1,24 +1,23 @@
 body { margin:0; padding:0; font-size:100%; line-height:1; }
 
+html, body {
+  height: 100%;
+}
 
 body {
 	background: #83D0AF;
 	font-family: "proxima-nova";
 	font-size: 16px;
 	display: flex !important ;
-	justify-content: center;
-	align-items: center;
 	height: 100%;
-
-
 }
+
 .landing {
 	width: 100%;
-	justify-content: center;
-	align-items:center;
-	display:flex;
-	flex:1;
-	/*flex-direction: column;*/
+	flex: 1;
+	display: none;
+  	align-items: center;
+  	justify-content: center;
 
 }
 
@@ -30,6 +29,9 @@ body {
 	line-height: 3em;	
 
 }
+
+
+
 
 .user-type {
 	/*font-size: 50px;	*/
