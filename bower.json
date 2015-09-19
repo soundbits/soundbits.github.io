@@ -19,6 +19,7 @@
     "normalize-css": "~3.0.3",
     "ractive": "~0.7.3",
     "ractive-backbone": "~0.3.0",
+    "ractive-events-tap": "~0.2.0",
     "underscore": "~1.8.3"
   }
 }
