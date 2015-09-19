@@ -10,7 +10,6 @@ landingPage.on('click', skipLandingPage)
 var skipLandingPage = function () {
 	console.log('skip')
 	landingPage.hide();
-
 }
 var ractive = new Ractive({
   // The `el` option can be a node, an ID, or a CSS selector.
