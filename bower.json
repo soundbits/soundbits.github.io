@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "backbone": "~1.2.3",
+    "howler.js": "howler#~1.1.26",
     "jquery": "~2.1.4",
     "normalize-css": "~3.0.3",
     "ractive": "~0.7.3",
