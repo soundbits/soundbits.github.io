@@ -1,15 +1,27 @@
 console.log('run')
 
-var landingPage = $(".landing");
-var userType = $(".user-type");
-var newPodcastUserButton = $(".new-to-podcasts")
-var existingPodcastUserButton = $(".has-podcasts")
+var $landingPage = null;
+var $userType = null;
+var $newPodcastUserButton = null;
+var $existingPodcastUserButton = null;
 
-landingPage.on('click', skipLandingPage)
+var onDocumentLoad = function(e) {
+
+$landingPage = $(".landing");
+$userType = $(".user-type");
+$newPodcastUserButton = $(".new-to-podcasts");
+$existingPodcastUserButton = $(".has-podcasts");
+
+
+setTimeout(skipLandingPage, 100);
+
+}
+
+// landingPage.on('click', skipLandingPage)
 
 var skipLandingPage = function () {
 	console.log('skip')
-	landingPage.hide();
+	$landingPage.hide();
 }
 var ractive = new Ractive({
   // The `el` option can be a node, an ID, or a CSS selector.
