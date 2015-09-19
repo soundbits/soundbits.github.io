@@ -15,7 +15,7 @@ body {
 .landing {
 	width: 100%;
 	flex: 1;
-	display: none;
+	display:none;
   	align-items: center;
   	justify-content: center;
 
@@ -34,5 +34,38 @@ body {
 
 
 .user-type {
-	/*font-size: 50px;	*/
+	display: flex;
+	width:100%;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+}
+
+.what-listen h2{
+	align-self: flex-start;
+	font-size:3em;
+}
+
+
+.has-podcasts h3{
+	font-size: 2em;
+} 
+.new-to-podcasts h3{
+	font-size: 2em;
+}
+
+.btn {
+	border: 1px solid #666; 
+	border-radius:5px;
+	padding:6px;
+	margin:6px;
+	width:90%;
+    text-align: center;
+    box-shadow: 2px 2px 11px #333;
+    cursor: pointer;
+}
+
+.btn:active{
+	border: 1px solid #333;
+    box-shadow: 0px 0px 3px #333;
 }
