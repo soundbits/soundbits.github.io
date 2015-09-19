@@ -1,0 +1,24 @@
+{
+  "name": "soundbits",
+  "version": "0.0.1",
+  "homepage": "https://github.com/soundbits/soundbits.github.io",
+  "authors": [
+    "Alan Palazzolo <github@zzolo.org>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "jquery": "~2.1.4",
+    "normalize-css": "~3.0.3",
+    "ractive": "~0.7.3",
+    "ractive-backbone": "~0.3.0",
+    "underscore": "~1.8.3"
+  }
+}
