@@ -1,56 +1,25 @@
-console.log('run')
-
-var $landingPage = null;
-var $userType = null;
-var $newPodcastUserButton = null;
-var $existingPodcastUserButton = null;
-
-var onDocumentLoad = function(e) {
-
-$landingPage = $(".landing");
-$userType = $(".user-type");
-$newPodcastUserButton = $(".new-to-podcasts");
-$existingPodcastUserButton = $(".has-podcasts");
+/**
+ * Main JS
+ */
 
 
-setTimeout(skipLandingPage, 100);
+// Get user container.  Will attempt to see if stored in local storage.
+var user = new User();
 
-}
-
-// landingPage.on('click', skipLandingPage)
-
-var skipLandingPage = function () {
-	console.log('skip')
-	$landingPage.hide();
-}
+// Main template
 var ractive = new Ractive({
   el: '#container',
   template: '#template',
   data: {
   	showList: false,
   	currentSuggestion: undefined,
-  	user: {
-  		id: undefined,
-  		episodes: [],
-  		suggestions: [
-	  		{
-	  			episodeName: 'Reply All Exploder',
-	  			show: 'Reply All'
-	  		},
-	  		{
-	  			episodeName: 'Undo Undo Undo',
-	  			show: 'Reply All'
-	  		}
-  		],
-  		rejections: []
-  	},
+  	user: user,
   	shows: ['This American Life', 'Reply All', '99% Invisible', 'Radiolab', 'Morning Edition', 'Fresh Air', 'Star Talk', 'On the Media'],
   	selectedShows: []
   },
   getSuggestion: function() {
   	var shows = this.get('user.suggestions');
   	var suggestion = shows.shift();
-  	console.log(suggestion);
   	this.set('user.suggestions', shows);
   	return suggestion;
   }
@@ -60,24 +29,33 @@ ractive.on('selectShow', function(event, showName) {
 	this.push('selectedShows', showName);
 });
 
+// Show main options, save new user
 ractive.on('showOptions', function(event) {
-	this.set('user.id', 369);
+	var user = this.get('user');
+	user.save();
+
+	// TODO: Do this right when save is done
 	this.set('currentSuggestion', this.getSuggestion());
 });
 
 ractive.on('processSuggestion', function(event) {
-	console.log(event);
 	if (event.original.direction == 4) {
 		// swipe right
 		this.push('user.episodes', this.get('currentSuggestion'));
-	} else if (event.original.direction == 2) {
+	}
+	else if (event.original.direction == 2) {
 		// swipe left
 		this.push('user.rejections', this.get('currentSuggestion'));
 	}
+	else {
+		return;
+	}
+
 	var nextSuggestion = this.getSuggestion();
 	if (nextSuggestion) {
 		this.set('currentSuggestion', nextSuggestion);
-	} else {
+	}
+	else {
 		this.set({
 			currentSuggestion: undefined,
 			showList: true

@@ -4,9 +4,14 @@
 
 // User and preferences model
 var User = Backbone.Model.extend({
-  urlRoot: 'https://soundbits.herokuapp.com/users',
+  url: function() {
+    return (this.get('id')) ? 'https://soundbits.herokuapp.com/users/' + this.get('id') + '.json' :
+      'https://soundbits.herokuapp.com/users.json';
+  },
 
   initialize: function() {
+    this.loadLocal();
+
     // When the ID changes, then let's save that locally
     this.on('change:id', function() {
       localStorage.setItem('currentID', this.get('id'));
@@ -15,8 +20,12 @@ var User = Backbone.Model.extend({
 
   // Load ID from local storage
   loadLocal: function() {
-    var id = localStorage.setItem('currentID');
-    this.set('id', id);
+    var id = localStorage.getItem('currentID');
+
+    if (id) {
+      this.set('id', id);
+      this.fetch();
+    }
   },
 
   // Reset local storage
@@ -24,14 +33,6 @@ var User = Backbone.Model.extend({
     localStorage.removeItem('currentID');
   }
 });
-
-var u = new User();
-u.set('first_name', 'FIRST NAME');
-u.set('last_name', 'LAST NAME');
-console.log(u);
-u.save();
-
-
 
 // Episodes and shows
 var Episode = Backbone.Model.extend({
