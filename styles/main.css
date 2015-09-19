@@ -1,0 +1,35 @@
+body { margin:0; padding:0; font-size:100%; line-height:1; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+	background: #83D0AF;
+	font-family: "proxima-nova";
+	font-size: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.landing {
+	width: 100%;
+	flex: 1;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+
+}
+
+/*.tk-proxima-nova and .tk-adelle*/
+.landing h1 {
+	font-size: 4em;
+	text-align: center;
+	color: #E8F8FF;
+	line-height: 3em;	
+
+}
+
+.user-type {
+	/*font-size: 50px;	*/
+}
