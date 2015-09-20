@@ -36,9 +36,10 @@
               <h2>SoundBits</h2>
             </div>
           </div>
+          <h3 class="your-list">Your List</h3>
           <ul>
             {{#each user.episodes}}
-              <li>{{ podcast }}: {{ description }}</li>
+              <li class="pick-show">{{ podcast }}: {{ description }}</li>
             {{/each}}
           </ul>
         </div>
