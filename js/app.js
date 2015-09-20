@@ -55,6 +55,12 @@ var ractive = new Ractive({
         var current = 0;
         suggestions[current].play();
 
+        stack.on('throwoutright', function(e) {
+          console.log('WORK PLS');
+          console.log(ractive.get('selections'));
+          ractive.set('selections', ractive.get('selections') + 1);
+        });
+
         stack.on('throwout', function(e) {
           var index = cards.indexOf(e.target);
           var card = cards.splice(index)[0];
@@ -72,11 +78,6 @@ var ractive = new Ractive({
           var s  =ractive.get("user").get("suggestions").filter(function(s){return s.id==episodeId})[0]
           processSuggestion(e, s)
 
-        });
-
-        stack.on('throwoutright', function(e) {
-          console.log(ractive.get('selections'));
-          ractive.set('selections', ractive.get('selections') + 1);
         });
       }
     }
@@ -162,6 +163,9 @@ function processSuggestion(event, currentEpisode) {
     console.log("current episode ", currentEpisode )
     // Swipe right (good)
     if (event.throwDirection == 1) {
+      console.log("RIGHT");
+      console.log(ractive.get('selections'));
+      ractive.set('selections', ractive.get('selections') + 1);
      ractive.push('user.episodes', currentEpisode);
      user.saveEpisode(currentEpisode);
     }
