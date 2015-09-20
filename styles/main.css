@@ -156,28 +156,32 @@ body {
 
 #container {
 	background: #35BAF0;
-	display: none;
-	/*display: flex;*/
+	display: flex;
 	flex-direction:column;
 	width:100%;
 	height:100%;
 }
 .list-header {
-	height: 2.5em;
+	line-height: 2em;
 	font-family: "proxima-nova"
-	font-size: 2.5em;
-    line-height: 3em;
 	width: 100%;
     text-align: center;
 	justify-content: center;
 	align-self: flex-start;
 	color: #E8F8FF;
+    font-weight: 400;
+    padding-top: 10px;	
+}
 
+.list-header h2 {
+	font-size: 1em;
+    line-height: 1em;
 }
 
 .pick-show {
 	font-family: "adelle";
 	list-style-type: none;
+    font-size: 1em;
 	color: #E8F8FF;	
 	border: 1.5px solid #fff;
 	border-radius:5px;
@@ -192,6 +196,42 @@ body {
     min-width: 300px;
 	font-size: 1.2em;	
 
+}
+
+/*.queued-shows {
+	display: inline-block;
+	font-family: "adelle";
+    font-size: 1em;
+    list-style-type: none;
+    color: #E8F8FF;
+    border: 1.5px solid #fff;
+    padding: 6px;
+    width: 100%;
+    text-align: right;
+    height: 60px;
+    margin: 3px auto 3px auto;
+    cursor: pointer;
+    min-width: 300px;
+	margin-left:0px;
+	padding-left:0px;
+	border-left: none;
+	border-right: none;
+
+}*/
+
+.pick-show img {
+	float: left;
+	vertical-align: middle;
+}
+
+.pick-show p {
+	display: table-cell;
+	text-align: left;
+	padding-left: 15px;
+    text-overflow: ellipsis;
+  	width: 200px;
+  	white-space: nowrap;
+  	line-height: 60px;
 }
 
 .find {
@@ -255,24 +295,31 @@ body {
 }
 
 .find {
+
 	font-family: "adelle";
 	list-style-type: none;
 	color: #35BAF0;	
 	border: 1.5px solid #fff;
 	border-radius:5px;
-	padding:6px;
 	margin:15px 0 0 0;
 	width: 100%;
     text-align: center;
     height: 3em;
     line-height: 3em;
-    margin: 40px auto 6px auto;
     cursor: pointer;
 	background: #E8F8FF;
     min-width: 300px;
-	font-size: 1.2em;	
+	font-size: 1.2em;
+	position: fixed;
+	bottom: 0%;	
 }
-
+.find p {
+	display: inline-block;
+}
+.fa.fa-chevron-right {
+	margin-left: 10px; 
+	font-size: 1.2em;
+}
 .queue-header {
 	height: 2.5em;
 	font-family: "proxima-nova"

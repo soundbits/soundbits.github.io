@@ -18,7 +18,7 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-<!-- 
+
     <div id="container"></div>
 
     <script id="template" type="text/ractive">
@@ -117,7 +117,7 @@
               </div>
 
               <div class = "new-to-podcasts btn" on-tap="setState:suggest">
-                <h3> I'm New to Podcasts</h3>
+                <h3> Im New to Podcasts</h3>
               </div>
             </div>
           </div>
@@ -131,16 +131,22 @@
               </div>
               <h2>SoundBits</h2>
            </div>
-          <h2 class = "list-header">Which Podcasts Do You Listen To?</h2>
+          <h2 class = "list-header">What Do You Listen To?</h2>
 
           <ul>
             {{#each shows}}
-              <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
+              <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">
+              <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>              
+              <p>{{ name }}</p>
+              </li>
             {{/each}}
           </ul>
 
           {{#if (_.filter(shows, 'like').length) }}
-            <p class="find" on-tap="setState:suggest">Find New Shows!</p>
+            <div class="find">
+              <p on-tap="setState:suggest">Now Go Play!</p>
+              <i class="fa fa-chevron-right"></i>
+            </div>
           {{/if}}
         </div>
       {{/if}}
@@ -150,9 +156,9 @@
         <button on-tap="resetLocal">Reset</button>
       </div>
     </script>
- -->
 
-      <div class="centered-container">
+
+    <!--   <div class="centered-container">
         <div class="app-header">
           <i class="fa fa-chevron-left"></i>
           <h2>SoundBits</h2>
@@ -167,10 +173,10 @@
                 <a href=""><img src="https://farm4.staticflickr.com/3922/14844658675_2c291f4d29_z.jpg" alt="icon" width="60" height="auto"/></a>
                 <p>This American Life: Doppelgängers</p>
               </li>
- <!--              <li class = "queued-shows">
+              <li class = "queued-shows">
                 <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
               <p>Planet Money: The Hydrox Revolution</p>
-              </li> -->
+              </li>
               <li class = "queued-shows">
                 <a href=""><img src="https://pbs.twimg.com/profile_images/535929052171739136/Z59s1XPU.jpeg" alt="icon" width="60" height="auto"/></a>
               <p>Reply All: Today’s the Day</p>
@@ -189,7 +195,7 @@
         </div>
       </div>
       </div>
-
+ -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone-min.js"></script>
