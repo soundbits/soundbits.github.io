@@ -402,6 +402,7 @@ body {
 .queued-shows img {
 	float: left;
 	vertical-align: middle;
+	padding-left: 10px;
 }
 
 .queued-shows p {
