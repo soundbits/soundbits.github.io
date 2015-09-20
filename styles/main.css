@@ -61,6 +61,26 @@ body {
     font-family:"proxima-nova";
     -webkit-padding-before: .5em;
     -webkit-padding-after: .5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+}
+
+.app-header h2 {
+    width: 100%;
+    margin-left: -43px;
+}
+
+
+.logo {
+    background-image: url("/imgs/penguin-blue.png");
+    height: 32px;
+    width: 43px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 0 1 auto;
 }
 
 .fa.fa-chevron-left {
@@ -359,4 +379,35 @@ body {
 
 .reset button {
   width: auto;
+}
+
+.swiping img {
+	width: 100%;
+}
+
+#viewport {
+	position: relative;
+}
+
+#viewport .stack {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#viewport li {
+    width: 300px;
+    height: 400px;
+    list-style: none;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    font-size: 1em;
+    border: 10px solid #ECECEC;
+    box-sizing: border-box;
+    cursor: default;
 }
