@@ -75,7 +75,7 @@ body {
 
 .logo {
     background-image: url("/imgs/penguin-blue.png");
-    height: 32px;
+    height: 26px;
     width: 43px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -157,6 +157,7 @@ body {
 
 #container {
 	background: #35BAF0;
+	/*display: none; */
 	display: flex;
 	flex-direction:column;
 	width:100%;
@@ -321,6 +322,30 @@ body {
 	margin-left: 10px; 
 	font-size: 1.2em;
 }
+
+.episode-description {
+    padding-top: .7em;
+    padding-bottom: .7em;
+    padding-left: 0.7em;
+    color:#fff;
+    text-align: center;
+}
+.episode-count b{
+	padding-bottom: .7em;
+    padding-top: .3em;
+    text-align: center;
+    transition: all 1s;
+    font-size: 3em;
+
+}
+
+.episode-count {
+	padding-bottom: .7em;
+    padding-top: .7em;
+    text-align: center;
+    color: #fff;
+}
+
 .queue-header {
 	height: 2.5em;
 	font-family: "proxima-nova"

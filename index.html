@@ -30,9 +30,10 @@
       {{#if (state === 'list')}}
         <div class="list">
           <div class="list-container">
+          {{#each user.episodes}}
             <div class="list-header">{{ podcast }}</div>
-
             <div class = "podcast-list">{{ description }}</div>
+          {{/each}}
           </div>
         </div>
       {{/if}}
@@ -60,12 +61,13 @@
                 </ul>
               </div>
 
-              <p>{{count}}/3 episodes selected</p>
-
-              <div class="centered-container">
-                <div class="show-episode-list btn" on-tap="setState:list" >
-                  <h3>Your New Episodes</h3>
-                </div>
+              <p class="episode-description">{{ podcast }} - {{ description }}</p>
+              <p class="episode-count"> <b>0{{count}}/3</b><br>Selections</p>
+               <div class="export">
+                  <div class = "export-container">
+                    <p>Your New Episodes</p>
+                    <i class="fa fa-headphones"></i>
+                  </div>
               </div>
             </div>
         </div>
@@ -103,7 +105,7 @@
               </div>
               <h2>SoundBits</h2>
            </div>
-          <h2 class = "list-header">What Do You Listen To?</h2>
+          <h2 class = "list-header">What do you listen to?</h2>
 
           <ul>
             {{#each shows}}
@@ -166,10 +168,7 @@
         <i class="fa fa-headphones"></i>
         </div>
       </div>
-      </div>
- -->
-      </div>
-
+-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone-min.js"></script>

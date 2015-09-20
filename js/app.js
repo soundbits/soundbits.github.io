@@ -54,10 +54,6 @@ var ractive = new Ractive({
         }
         var current = 0;
         suggestions[current].play();
-        // $('.find').on('click', function() {
-        //   console.log('here');
-        //
-        // });
 
         stack.on('throwout', function(e) {
           var index = cards.indexOf(e.target);
@@ -71,11 +67,6 @@ var ractive = new Ractive({
           if(current< suggestions.length){
             suggestions[current].play()
           }
-          // suggestions[current].unload();
-          // current++;
-          // if (current < suggestions.length) {
-          //   suggestions[current].play();
-          // }
         });
       }
     }
