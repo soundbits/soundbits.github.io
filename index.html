@@ -18,7 +18,6 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-<!-- 
     <div id="container"></div>
 
     <script id="template" type="text/ractive">
@@ -46,58 +45,29 @@
             </div>
           </div>
 
-          {{#user.currentSuggestion}}
             <div  class="swipe-container" on-swipe="processSuggestion">
-              <div class="podcast-image">
-                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-              </div>
-
-              <p>Show: {{ podcast }}</p>
-              <p>Episode: {{ description }}</p>
+              <div id="viewport">
+                <ul class="stack">
+                    <li class="swiping">
+                      <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+                      <p>Show: podcast</p>
+                      <p>Episode: description</p>
+                    </li>
+                </ul>
+            </div>
+            
               <p>{{count}}/3 episodes selected</p>
+
               <div class="centered-container">
                 <div class="show-episode-list btn" >
                   <h3>Your New Episodes</h3>
                 </div>
               </div>
             </div>
-          {{/user.currentSuggestion}}
         </div>
       {{/if}}
 
       {{#if (state === 'intro')}}
-      <div id="viewport">
-        <ul class="stack">
-            <li class="clubs swiping">
-              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-            <li class="diamonds swiping">
-              <div class="podcast-image">
-                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-              </div>
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-            <li class="hearts swiping">
-              <div class="podcast-image">
-                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-              </div>
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-            <li class="spades swiping">
-              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-        </ul>
-    </div>
         <div class="intro">
           <div class="centered-container">
             <div class="app-header">
@@ -144,9 +114,8 @@
         <button on-tap="resetLocal">Reset</button>
       </div>
     </script>
- -->
 
-      <div class="queue-container">
+      <!-- <div class="queue-container">
         <div class="queue-header">
           <i class="fa fa-chevron-left"></i>
           <h2>Your List</h2>
@@ -156,10 +125,10 @@
                 <a href=""><img src="https://farm4.staticflickr.com/3922/14844658675_2c291f4d29_z.jpg" alt="icon" width="60" height="auto"/></a>
                 <p>This American Life: Doppelgängers</p>
               </li>
- <!--              <li class = "queued-shows">
+              <li class = "queued-shows">
                 <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
               <p>Planet Money: The Hydrox Revolution</p>
-              </li> -->
+              </li>
               <li class = "queued-shows">
                 <a href=""><img src="https://pbs.twimg.com/profile_images/535929052171739136/Z59s1XPU.jpeg" alt="icon" width="60" height="auto"/></a>
               <p>Reply All: Today’s the Day</p>
@@ -176,7 +145,7 @@
         <p>Play On Your Podcast App</p>
         <i class="fa fa-headphones"></i>
         </div>
-      </div>
+      </div> -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
@@ -195,6 +164,8 @@
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
       $(document).ready(function() {
+          var stack,
+              cards;
           var files = ['../sufjan.mp3', '../intro.mp3'];
           var suggestions = [];
 
@@ -206,21 +177,19 @@
           }
 
           var current = 0;
-          suggestions[current].play();
 
-          var stack,
-              cards;
+          $('.find').on('click', function() {
+            console.log('here');
+            suggestions[current].play();
+          });
 
           cards = [].slice.call(document.querySelectorAll('.stack li'));
 
           stack = gajus.Swing.Stack();
+          console.log(stack);
 
           cards.forEach(function(targetElement) {
             stack.createCard(targetElement);
-          });
-
-          stack.on('dragstart', function(e) {
-            console.log(cards);
           });
 
           stack.on('throwout', function(e) {
