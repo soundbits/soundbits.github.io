@@ -24,39 +24,30 @@
 
     <div class = "user-type">
       <div class="what-listen">
-        <h2> What Are You </br>Listening To?</h2>
+        <h2>Do You Have A</br>Favourite Podcast?</h2>
       </div>
       <div class = "has-podcasts btn"> 
-        <h3> Has Listened To Podcasts</h3>
+        <h3>I Have A Few</h3>
       </div>
       <div class = "new-to-podcasts btn"> 
-        <h3> New To Podcasts</h3>
+        <h3>Nope</h3>
       </div>
     </div>
     </div>
 
-
-    <div id="container">
+<!--     <div class = "list-container">
+    {{#user.id}}
+     <p>Here is your list!</p>
+    {{/user.id}}
+      <div class = "list-header">
+      </div>
+      <div class = "podcast-list"> 
+        <
+      </div>
     </div>
+ -->
 
 
-     <script id='template' type='text/ractive'>
-<!--       
-     //  {{#user.id}}
-     //    <p>Here is your list!</p>
-     //  {{/user.id}}
-     //  {{^user.id}}
-     //    <p>What have you been listening to?</p>
-     //    <ul>
-     //      <ul>
-     //      {{#each shows}}
-     //        <li>{{.}}</li>
-     //      {{/each}}
-     //      </ul>
-     //    </ul>
-     //  {{/user.id}}
-
--->
     <div id="container">
     </div>
      <script id="template" type="text/ractive">
@@ -80,10 +71,12 @@
         {{/if}}
       {{/user.id}}
       {{^user.id}}
+      <div class = "list-header">
         <p>What have you been listening to?</p>
+      </div>
         <ul>
         {{#each shows}}
-          <li on-tap="selectShow:{{.}}">{{.}}</li>
+          <li on-tap="selectShow:{{.}}" class = "like" style = "list-style-type: none">{{.}}</li>
         {{/each}}
         </ul>
         <p>Your added shows</p>

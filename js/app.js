@@ -1,28 +1,3 @@
-console.log('run')
-
-var $landingPage = null;
-var $userType = null;
-var $newPodcastUserButton = null;
-var $existingPodcastUserButton = null;
-
-var onDocumentLoad = function(e) {
-
-$landingPage = $(".landing");
-$userType = $(".user-type");
-$newPodcastUserButton = $(".new-to-podcasts");
-$existingPodcastUserButton = $(".has-podcasts");
-
-
-setTimeout(skipLandingPage, 100);
-
-}
-
-// landingPage.on('click', skipLandingPage)
-
-var skipLandingPage = function () {
-	console.log('skip')
-	$landingPage.hide();
-}
 var ractive = new Ractive({
   el: '#container',
   template: '#template',
