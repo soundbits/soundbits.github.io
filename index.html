@@ -30,9 +30,10 @@
       {{#if (state === 'list')}}
         <div class="list">
           <div class="list-container">
+          {{#each user.episodes}}
             <div class="list-header">{{ podcast }}</div>
-
             <div class = "podcast-list">{{ description }}</div>
+          {{/each}}
           </div>
         </div>
       {{/if}}
