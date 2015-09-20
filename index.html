@@ -29,13 +29,12 @@
       {{/if}}
 
       {{#if (state === 'list')}}
-        <p>Here is your list!</p>
+        <div class = "list-container">
+          <p>Here is your list!</p>
+          <div class="list-header">{{ podcast }}</div>
 
-        {{#each user.episodes}}
-          <ul>
-            <li>{{show}}: {{episodeName}}</li>
-          </ul>
-        {{/each}}
+          <div class = "podcast-list">{{ description }}</div>
+        </div>
       {{/if}}
 
       {{#if (state === 'suggest')}}
@@ -70,7 +69,7 @@
 
         <ul>
           {{#each shows}}
-            <li class="{{#like}}liked{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
+            <li class="{{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
           {{/each}}
         </ul>
 
@@ -90,12 +89,17 @@
     <script src="bower_components/ractive-events-tap/dist/ractive-events-tap.js"></script>
     <script src="bower_components/hammerjs/hammer.min.js"></script>
     <script src="bower_components/ractive-touch/index.js"></script>
+    <script src="bower_components/howler.js/howler.min.js"></script>
     <script src="js/models.js"></script>
     <script src="js/app.js"></script>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
+      var sound = new Howl({
+        urls: ['../intro.mp3'],
+        autoplay: true
+      });
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
