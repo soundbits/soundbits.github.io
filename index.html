@@ -75,16 +75,16 @@
 
       {{#if (state === 'pick')}}
         <div class="pick">
-          <h2>Do you listen to these?</h2>
+          <h2 class = "list-header">Which Podcasts Do You Listen To?</h2>
 
           <ul>
             {{#each shows}}
-              <li class="{{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
+              <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
             {{/each}}
           </ul>
 
           {{#if (_.filter(shows, 'like').length) }}
-            <p on-tap="setState:suggest">Find new podcasts</p>
+            <p class="find" on-tap="setState:suggest">Find New Shows!</p>
           {{/if}}
         </div>
       {{/if}}

@@ -102,26 +102,25 @@ body {
 	width:100%;
 }
 .list-header {
-	height: 8.5em;
-}
-.list-header p {
+	height: 2.5em;
+	font-family: "proxima-nova"
+	font-size: 2.5em;
+    line-height: 3em;
 	width: 100%;
     text-align: center;
 	justify-content: center;
 	align-self: flex-start;
-	font-size: 2.5em;
-    line-height: 1em;
 	color: #E8F8FF;
+
 }
 
-.like {
+.pick-show {
 	font-family: "adelle";
-	background: #FFFDB8;
+	list-style-type: none;
+	color: #E8F8FF;	
 	border: 1.5px solid #fff;
-	color: #F74E2F;
 	border-radius:5px;
 	padding:6px;
-	margin:6px;
 	width: 90%;
     text-align: center;
     height: 3em;
@@ -130,13 +129,41 @@ body {
     cursor: pointer;
     max-width: 550px;
     min-width: 300px;
-	font-size: 1.2em;
+	font-size: 1.2em;	
+
+}
+
+.find {
+
+	font-family: "adelle";
+	list-style-type: none;
+	color: #35BAF0;	
+	border: 1.5px solid #fff;
+	border-radius:5px;
+	padding:6px;
+	margin:15px 0 0 0;
+	width: 100%;
+    text-align: center;
+    height: 3em;
+    line-height: 3em;
+    margin: 40px auto 6px auto;
+    cursor: pointer;
+	background: #E8F8FF;
+    min-width: 300px;
+	font-size: 1.2em;	
+}
+
+.pick-show.like {
+	background: #FFFDB8;
+	color: #F74E2F;
+	border: 2px solid #F7924C;
 
 }
 
 .like ul {
 	justify-content: center;
 }
+
 
 .swipe-container {
 	display: flex;
