@@ -2,6 +2,7 @@ body { margin:0; padding:0; font-size:100%; line-height:1; }
 
 html, body {
   height: 100%;
+  font-family: "proxima-nova";
 }
 
 ul {
@@ -31,8 +32,9 @@ body {
 	height: 100%;
 }
 
-.landing {
+.intro {
 	width: 100%;
+	height:100%;
 	flex: 1;
 	display: flex;
   	align-items: center;
@@ -41,7 +43,7 @@ body {
 }
 
 /*.tk-proxima-nova and .tk-adelle*/
-.landing h1 {
+.intro h1 {
 	font-size: 4em;
 	text-align: center;
 	color: #E8F8FF;
@@ -60,18 +62,23 @@ body {
 
 .what-listen h2{
 	align-self: flex-start;
-	font-size:3em;
+	font-size: 2.6em;
 	color: #E8F8FF;
+	padding-bottom: 0.5em;
 }
 
 
 .has-podcasts h3{
 	color: #E8F8FF;
 	font-size: 2em;
+	font-family: adelle;
+	font-weight: 500;
 }
 .new-to-podcasts h3{
 	color: #E8F8FF;
 	font-size: 2em;
+	font-family: adelle;
+	font-weight: 500;
 }
 
 .btn {
@@ -100,6 +107,7 @@ body {
 	display: flex;
 	flex-direction:column;
 	width:100%;
+	height:100%;
 }
 .list-header {
 	height: 2.5em;
