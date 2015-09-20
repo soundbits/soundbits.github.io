@@ -29,16 +29,43 @@
 
       {{#if (state === 'list')}}
         <div class="list">
-          <div class="list-container">
-          {{#each user.episodes}}
-            <div class="list-header">{{ podcast }}</div>
-            <div class = "podcast-list">{{ description }}</div>
-          {{/each}}
+          <div class="centered-container">
+            <div class="app-header">
+              <div class="logo">
+              </div>
+              <h2>SoundBits</h2>
+            </div>
           </div>
+
+          <div class="queue-container">
+            <div class="queue-header">
+              <h2>Your List</h2>
+            </div>
+            <ul class="queue-list">
+            {{#each user.episodes}}
+              <li class = "queued-shows">
+                <a href=""><img src={{podcast_image_url}} alt="icon" width="60" height="auto"/></a>
+                <p>{{ podcast }}: {{ description }}</p>
+              </li>
+            {{/each}}
+            </ul>
+          </div>
+
+          <div class="export">
+            <div class = "export-container">
+              <p>Play On Your Podcast App</p>
+              <i class="fa fa-headphones"></i>
+            </div>
+          </div>
+
         </div>
       {{/if}}
 
       {{#if (state === 'suggest')}}
+
+        <i class="fa fa-chevron-right big"></i>
+        <i class="fa fa-chevron-left big"></i>
+
         <div class="suggest">
           <div class="centered-container">
             <div class="app-header">
@@ -61,13 +88,10 @@
                 </ul>
               </div>
 
-              <p class="episode-description">{{ podcast }} - {{ description }}</p>
-              <p class="episode-count"> <b>0{{count}}/3</b><br>Selections</p>
-               <div class="export">
-                  <div class = "export-container">
-                    <p>Your New Episodes</p>
-                    <i class="fa fa-headphones"></i>
-                  </div>
+              <p class="episode-count"> <b>{{selections}}</b><br>Selections</p>
+              <div class="find" on-tap="setState:list">
+                    <p >Your New Episodes</p>
+              <i class="fa fa-chevron-right"></i>
               </div>
             </div>
         </div>
@@ -110,7 +134,7 @@
           <ul>
             {{#each shows}}
               <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">
-              <a href=""><img src="{{url}}" alt="icon" width="60" height="auto"/></a>
+              <a href=""><img src="{{ url }}" alt="icon" width="60" height="auto"/></a>
               <p>{{ name }}</p>
               </li>
             {{/each}}
@@ -132,43 +156,14 @@
     </script>
 
 
-    <!--   <div class="centered-container">
+<!--        <div class="centered-container">
         <div class="app-header">
           <i class="fa fa-chevron-left"></i>
           <h2>SoundBits</h2>
         </div>
 
-      <div class="queue-container">
-        <div class="queue-header">
-          <h2>Your List</h2>
-        </div>
-            <ul class="queue-list">
-              <li class = "queued-shows">
-                <a href=""><img src="https://farm4.staticflickr.com/3922/14844658675_2c291f4d29_z.jpg" alt="icon" width="60" height="auto"/></a>
-                <p>This American Life: Doppelgängers</p>
-              </li>
-              <li class = "queued-shows">
-                <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
-              <p>Planet Money: The Hydrox Revolution</p>
-              </li>
-              <li class = "queued-shows">
-                <a href=""><img src="https://pbs.twimg.com/profile_images/535929052171739136/Z59s1XPU.jpeg" alt="icon" width="60" height="auto"/></a>
-              <p>Reply All: Today’s the Day</p>
-              </li>
-              <li class = "queued-shows">
-                <a href=""><img src="https://gimletmedia.com/wp-content/uploads/2015/04/Mystery-Logo.jpg" alt="icon" width="60" height="auto"/></a>
-              <p>Mystery Show: Case #3 Belt Buckle</p>
-              </li>
-            </ul>
-      </div>
+       -->
 
-      <div class="export">
-        <div class = "export-container">
-        <p>Play On Your Podcast App</p>
-        <i class="fa fa-headphones"></i>
-        </div>
-      </div>
--->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone-min.js"></script>
@@ -185,51 +180,6 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
-
-
-      $(document).ready(function() {
-          var stack,
-              cards;
-          var files = ['../sufjan.mp3', '../intro.mp3'];
-          var suggestions = [];
-
-          for (var i=0; i < files.length; i++) {
-            var sound = new Howl({
-              urls:[files[i]]
-            });
-            suggestions.push(sound);
-          }
-
-          var current = 0;
-
-          $('.find').on('click', function() {
-            console.log('here');
-            suggestions[current].play();
-          });
-
-          cards = [].slice.call(document.querySelectorAll('.stack li'));
-
-          stack = gajus.Swing.Stack();
-          console.log(stack);
-
-          cards.forEach(function(targetElement) {
-            stack.createCard(targetElement);
-          });
-
-          stack.on('throwout', function(e) {
-            var index = cards.indexOf(e.target);
-            var card = cards.splice(index)[0];
-            $(card).fadeOut(100, function() {
-              $(card).remove();
-            });
-            suggestions[current].unload();
-            current++;
-            if (current < suggestions.length) {
-              suggestions[current].play();
-            }
-          });
-      });
-
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
