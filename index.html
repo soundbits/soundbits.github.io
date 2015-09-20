@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://use.typekit.net/nml8ndz.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
@@ -18,7 +18,6 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <div id="container"></div>
 
     <script id="template" type="text/ractive">
@@ -31,9 +30,10 @@
       {{#if (state === 'list')}}
         <div class="list">
           <div class="list-container">
+          {{#each user.episodes}}
             <div class="list-header">{{ podcast }}</div>
-
             <div class = "podcast-list">{{ description }}</div>
+          {{/each}}
           </div>
         </div>
       {{/if}}
@@ -48,10 +48,17 @@
             </div>
           </div>
 
-          {{#user.currentSuggestion}}
             <div  class="swipe-container" on-swipe="processSuggestion">
-              <div class="podcast-image">
-                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+              <div id="viewport">
+                <ul class="stack">
+                    {{#each user.suggestions}}
+                      <li class="swiping" audioUrl="{{excerpt_url}}">
+                        <img src = {{podcast_image_url}}>
+                        <p>Show: {{ podcast }}</p>
+                        <p>Episode: {{description}}</p>
+                      </li>
+                    {{/each}}
+                </ul>
               </div>
 
               <p class="episode-description">{{ podcast }} - {{ description }}</p>
@@ -63,43 +70,10 @@
                   </div>
               </div>
             </div>
-          {{/user.currentSuggestion}}
         </div>
       {{/if}}
 
       {{#if (state === 'intro')}}
-      <div id="viewport">
-        <ul class="stack">
-            <li class="clubs swiping">
-              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-            <li class="diamonds swiping">
-              <div class="podcast-image">
-                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-              </div>
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-            <li class="hearts swiping">
-              <div class="podcast-image">
-                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-              </div>
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-            <li class="spades swiping">
-              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-
-              <p>Show: This American Life</p>
-              <p>Episode: A great show</p>
-            </li>
-        </ul>
-    </div>
         <div class="intro">
           <div class="centered-container">
             <div class="app-header">
@@ -109,15 +83,15 @@
             </div>
             <div class="user-type">
               <div class="what-listen">
-                <h2> Do You Have A <br>Favourite Podcast?</h2>
+                <h2> Do you have a <br>favourite podcast?</h2>
               </div>
 
               <div class="has-podcasts btn" on-tap="setState:pick">
-                <h3>I Have a Few</h3>
+                <h3>I have a few</h3>
               </div>
 
               <div class = "new-to-podcasts btn" on-tap="setState:suggest">
-                <h3> I'm New to Podcasts</h3>
+                <h3> I am new to podcasts</h3>
               </div>
             </div>
           </div>
@@ -131,16 +105,22 @@
               </div>
               <h2>SoundBits</h2>
            </div>
-          <h2 class = "list-header">Which Podcasts Do You Listen To?</h2>
+          <h2 class = "list-header">What do you listen to?</h2>
 
           <ul>
             {{#each shows}}
-              <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
+              <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">
+              <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
+              <p>{{ name }}</p>
+              </li>
             {{/each}}
           </ul>
 
           {{#if (_.filter(shows, 'like').length) }}
-            <p class="find" on-tap="setState:suggest">Find New Shows!</p>
+            <div class="find">
+              <p on-tap="setState:suggest">Now Go Play!</p>
+              <i class="fa fa-chevron-right"></i>
+            </div>
           {{/if}}
         </div>
       {{/if}}
@@ -151,11 +131,15 @@
       </div>
     </script>
 
-<!--
+
+    <!--   <div class="centered-container">
+        <div class="app-header">
+          <i class="fa fa-chevron-left"></i>
+          <h2>SoundBits</h2>
+        </div>
 
       <div class="queue-container">
         <div class="queue-header">
-          <i class="fa fa-chevron-left"></i>
           <h2>Your List</h2>
         </div>
             <ul class="queue-list">
@@ -163,12 +147,11 @@
                 <a href=""><img src="https://farm4.staticflickr.com/3922/14844658675_2c291f4d29_z.jpg" alt="icon" width="60" height="auto"/></a>
                 <p>This American Life: Doppelgängers</p>
               </li>
-            -->
- <!--              <li class = "queued-shows">
+              <li class = "queued-shows">
                 <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
               <p>Planet Money: The Hydrox Revolution</p>
-              </li> -->
-<!--              <li class = "queued-shows">
+              </li>
+              <li class = "queued-shows">
                 <a href=""><img src="https://pbs.twimg.com/profile_images/535929052171739136/Z59s1XPU.jpeg" alt="icon" width="60" height="auto"/></a>
               <p>Reply All: Today’s the Day</p>
               </li>
@@ -203,6 +186,8 @@
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
       $(document).ready(function() {
+          var stack,
+              cards;
           var files = ['../sufjan.mp3', '../intro.mp3'];
           var suggestions = [];
 
@@ -214,21 +199,19 @@
           }
 
           var current = 0;
-          suggestions[current].play();
 
-          var stack,
-              cards;
+          $('.find').on('click', function() {
+            console.log('here');
+            suggestions[current].play();
+          });
 
           cards = [].slice.call(document.querySelectorAll('.stack li'));
 
           stack = gajus.Swing.Stack();
+          console.log(stack);
 
           cards.forEach(function(targetElement) {
             stack.createCard(targetElement);
-          });
-
-          stack.on('dragstart', function(e) {
-            console.log(cards);
           });
 
           stack.on('throwout', function(e) {

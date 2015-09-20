@@ -5,8 +5,8 @@
 // User and preferences model
 var User = Backbone.Model.extend({
   url: function() {
-    return (this.get('id')) ? 'https://soundbits.herokuapp.com/users/' + this.get('id') + '.json' :
-      'https://soundbits.herokuapp.com/users.json';
+    return (this.get('id')) ? 'http://localhost:3000/users/' + this.get('id') + '.json' :
+      'http://localhost:3000/users.json';
   },
 
   initialize: function() {
@@ -71,7 +71,7 @@ var User = Backbone.Model.extend({
   // Save episodes addition
   saveEpisode: function(episode) {
     Backbone.sync('create', undefined, {
-      url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/add_episode.json',
+      url: 'http://localhost:3000/users/' + this.get('id') + '/add_episode.json',
       attrs: { episode_id: episode.id }
     });
   },
@@ -79,7 +79,7 @@ var User = Backbone.Model.extend({
   // Save rejection addition
   saveRejection: function(episode) {
     Backbone.sync('create', undefined, {
-      url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/add_rejection.json',
+      url: 'http://localhost:3000/users/' + this.get('id') + '/add_rejection.json',
       attrs: { episode_id: episode.id }
     });
   }
