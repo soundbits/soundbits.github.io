@@ -18,85 +18,81 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class = "landing">
-      <h1>Sound Bits</h1>
-    </div>
 
-    <div class = "user-type">
-      <div class="what-listen">
-        <h2> What Are You </br>Listening To?</h2>
-      </div>
-      <div class = "has-podcasts btn">
-        <h3> Has Listened To Podcasts</h3>
-      </div>
-      <div class = "new-to-podcasts btn">
-        <h3> New To Podcasts</h3>
-      </div>
-    </div>
-    </div>
+    <div id="container"></div>
 
+    <script id="template" type="text/ractive">
+      {{#if (state === 'landing')}}
+        <div class="landing">
+          <h1>Sound Bits</h1>
+        </div>
+      {{/if}}
 
-    <div id="container">
-    </div>
+      {{#if (state === 'list')}}
+        <div class="list">
+          <div class="list-container">
+            <div class="list-header">{{ podcast }}</div>
 
+            <div class = "podcast-list">{{ description }}</div>
+          </div>
+        </div>
+      {{/if}}
 
-     <script id='template' type='text/ractive'>
-<!--
-     //  {{#user.id}}
-     //    <p>Here is your list!</p>
-     //  {{/user.id}}
-     //  {{^user.id}}
-     //    <p>What have you been listening to?</p>
-     //    <ul>
-     //      <ul>
-     //      {{#each shows}}
-     //        <li>{{.}}</li>
-     //      {{/each}}
-     //      </ul>
-     //    </ul>
-     //  {{/user.id}}
+      {{#if (state === 'suggest')}}
+        <div class="suggest">
+          <h2>Check this out</h2>
 
--->
-    <div id="container">
-    </div>
-     <script id="template" type="text/ractive">
-      {{#user.id}}
-        {{#if user.episodes && showList}}
-          <p>Here is your list!</p>
-          {{#each user.episodes}}
-            <ul>
-              <li>{{show}}: {{episodeName}}</li>
-            </ul>
-          {{/each}}
-        {{/if}}
-        {{#if !user.episodes || !showList}}
-          <p>Here are some suggestions!</p>
-          {{#currentSuggestion}}
-            <div on-swipe="processSuggestion">
-              <p>Show: {{show}}</p>
-              <p>Episode: {{episodeName}}</p>
+          {{#user.currentSuggestion}}
+            <div  class="swipe-container" on-swipe="processSuggestion">
+              <div class="podcast-image">
+                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+              </div>
+
+              <p>Show: {{ podcast }}</p>
+              <p>Episode: {{ description }}</p>
             </div>
-          {{/currentSuggestion}}
-        {{/if}}
-      {{/user.id}}
-      {{^user.id}}
-        <p>What have you been listening to?</p>
-        <ul>
-        {{#each shows}}
-          <li on-tap="selectShow:{{.}}">{{.}}</li>
-        {{/each}}
-        </ul>
-        <p>Your added shows</p>
-        <ul>
-        {{#each selectedShows}}
-          <li>{{.}}</li>
-        {{/each}}
-        </ul>
-        {{#if (selectedShows.length > 0)}}
-          <p on-tap="showOptions">Give me options!</p>
-        {{/if}}
-      {{/user.id}}
-      </script>
+          {{/user.currentSuggestion}}
+        </div>
+      {{/if}}
+
+      {{#if (state === 'intro')}}
+        <div class="intro">
+          <div class="user-type">
+            <div class="what-listen">
+              <h2> What Are You <br>Listening To?</h2>
+            </div>
+
+            <div class="has-podcasts btn" on-tap="setState:pick">
+              <h3>Has Listened To Podcasts</h3>
+            </div>
+
+            <div class = "new-to-podcasts btn" on-tap="setState:suggest">
+              <h3> New To Podcasts</h3>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if (state === 'pick')}}
+        <div class="pick">
+          <h2>Do you listen to these?</h2>
+
+          <ul>
+            {{#each shows}}
+              <li class="{{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
+            {{/each}}
+          </ul>
+
+          {{#if (_.filter(shows, 'like').length) }}
+            <p on-tap="setState:suggest">Find new podcasts</p>
+          {{/if}}
+        </div>
+      {{/if}}
+
+      <div class="reset">
+        <button on-tap="resetLocal">Reset</button>
+      </div>
+    </script>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
