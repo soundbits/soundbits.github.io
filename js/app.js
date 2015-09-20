@@ -58,7 +58,6 @@ var ractive = new Ractive({
         stack.on('throwout', function(e) {
           var index = cards.indexOf(e.target);
           var card = cards.splice(index)[0];
-
           $(card).fadeOut(100, function() {
             $(card).remove();
           });
@@ -67,6 +66,12 @@ var ractive = new Ractive({
           if(current< suggestions.length){
             suggestions[current].play()
           }
+
+          var episodeId = parseInt($(e.target).attr("episodeId"))
+
+          var s  =ractive.get("user").get("suggestions").filter(function(s){return s.id==episodeId})[0]
+          processSuggestion(e, s)
+
         });
       }
     }
@@ -88,6 +93,7 @@ var ractive = new Ractive({
 ractive.on('setState', function(event, state) {
     this.set('state', state);
 });
+
 
 // When state changes
 ractive.observe('state', function(newValue, old, key) {
@@ -144,19 +150,19 @@ ractive.on('selectShow', function(event, id) {
 });
 
 // Process a swipe suggestion
-ractive.on('processSuggestion', function(event) {
-    var user = this.get('user');
-    var c = this.get('user.currentSuggestion');
+function processSuggestion(event, currentEpisode) {
 
+    var user = ractive.get('user');
+    console.log("current episode ", currentEpisode )
     // Swipe right (good)
-    if (event.original.direction == 4) {
-     this.push('user.episodes', c);
-     user.saveEpisode(c);
+    if (event.throwDirection == 1) {
+     ractive.push('user.episodes', currentEpisode);
+     user.saveEpisode(currentEpisode);
     }
     // Swipe left (bad)
-    else if (event.original.direction == 2) {
-     this.push('user.rejections', c);
-     user.saveRejection(c);
+    else if (event.throwDirection == 2) {
+     ractive.push('user.rejections', currentEpisode);
+     user.saveRejection(currentEpisode);
     }
     // Bad swipe
     else {
@@ -164,7 +170,7 @@ ractive.on('processSuggestion', function(event) {
     }
 
     // Get a new one, if no more, show list
-    if (!user.getNewSuggestion()) {
-     this.set('state', 'list');
-    }
-});
+    // if (!user.getNewSuggestion()) {
+    //  this.set('state', 'list');
+    // }
+}

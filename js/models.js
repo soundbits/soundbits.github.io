@@ -3,10 +3,13 @@
  */
 
 // User and preferences model
+
+// host = "https://soundbits.herokuapp.com"
+host = "http://localhost:3000"
 var User = Backbone.Model.extend({
   url: function() {
-    return (this.get('id')) ? 'https://soundbits.herokuapp.com/users/' + this.get('id') + '.json' :
-      'https://soundbits.herokuapp.com/users.json';
+    return (this.get('id')) ? host+'/users/' + this.get('id') + '.json' :
+      host+'/users.json';
   },
 
   initialize: function() {
@@ -70,17 +73,16 @@ var User = Backbone.Model.extend({
 
   // Save episodes addition
   saveEpisode: function(episode) {
+    
     Backbone.sync('create', undefined, {
-      url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/add_episode.json',
-      attrs: { episode_id: episode.id }
+      url: host+'/users/' + this.get('id') + '/add_episode/'+episode.id+'.json'
     });
   },
 
   // Save rejection addition
   saveRejection: function(episode) {
     Backbone.sync('create', undefined, {
-      url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/add_rejection.json',
-      attrs: { episode_id: episode.id }
+      url: host+'/users/' + this.get('id') + '/add_rejection/'+episode.id+'.json'
     });
   }
 });

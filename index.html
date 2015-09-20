@@ -48,11 +48,11 @@
             </div>
           </div>
 
-            <div  class="swipe-container" on-swipe="processSuggestion">
+            <div  class="swipe-container" >
               <div id="viewport">
                 <ul class="stack">
                     {{#each user.suggestions}}
-                      <li class="swiping" audioUrl="{{excerpt_url}}">
+                      <li class="swiping" audioUrl="{{excerpt_url}}" episodeId="{{id}}">
                         <img src = {{podcast_image_url}}>
                         <p>Show: {{ podcast }}</p>
                         <p>Episode: {{description}}</p>
@@ -185,6 +185,8 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
+
+
       $(document).ready(function() {
           var stack,
               cards;
