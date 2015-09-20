@@ -90,14 +90,31 @@ body {
 .fa.fa-chevron-right.big {
     position: absolute;
     top: 45%;
-    right: 20%;
+    right: 19%;
     color:#fff;
     font-size: 3em;
+}
+
+.swipe-directions-left {
+	font-family: "adelle"
+	font-size: .5em;
+    position: absolute;
+    top: 55%;
+    left: 16%;
+    color:#fff;
+}
+.swipe-directions-right {
+	font-family: "adelle"
+	font-size: .5em;
+    position: absolute;
+    top: 55%;
+    right: 16%;
+    color:#fff;
 }
 .fa.fa-chevron-left.big {
     position: absolute;
     top: 45%;
-    left: 20%;
+    left: 18%;
     color:#fff;
     font-size: 3em;
 }
