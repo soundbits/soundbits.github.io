@@ -59,11 +59,11 @@
         <div class="intro">
           <div class="user-type">
             <div class="what-listen">
-              <h2> What Are You <br>Listening To?</h2>
+              <h2> Do You Have A <br>Favourite Podcast?</h2>
             </div>
 
             <div class="has-podcasts btn" on-tap="setState:pick">
-              <h3>Has Listened To Podcasts</h3>
+              <h3>I Have a Few</h3>
             </div>
 
             <div class = "new-to-podcasts btn" on-tap="setState:suggest">
@@ -75,16 +75,16 @@
 
       {{#if (state === 'pick')}}
         <div class="pick">
-          <h2>Do you listen to these?</h2>
+          <h2 class = "list-header">Which Podcasts Do You Listen To?</h2>
 
           <ul>
             {{#each shows}}
-              <li class="{{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
+              <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">{{ name }}</li>
             {{/each}}
           </ul>
 
           {{#if (_.filter(shows, 'like').length) }}
-            <p on-tap="setState:suggest">Find new podcasts</p>
+            <p class="find" on-tap="setState:suggest">Find New Shows!</p>
           {{/if}}
         </div>
       {{/if}}
@@ -109,12 +109,26 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
-      /*
-      var sound = new Howl({
-        urls: ['../intro.mp3'],
-        autoplay: true
+      var files = ['../sufjan.mp3', '../intro.mp3'];
+      var suggestions = [];
+
+      for (var i=0; i < files.length; i++) {
+        var sound = new Howl({
+          urls:[files[i]]
+        });
+        suggestions.push(sound);
+      }
+
+      var current = 0;
+      suggestions[current].play();
+
+      $('.btn').on('click', function(e) {
+        suggestions[current].unload();
+        current++;
+        if (current < suggestions.length) {
+          suggestions[current].play();
+        }
       });
-      */
 
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

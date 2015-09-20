@@ -2,6 +2,7 @@ body { margin:0; padding:0; font-size:100%; line-height:1; }
 
 html, body {
   height: 100%;
+  font-family: "proxima-nova";
 }
 
 ul {
@@ -31,8 +32,9 @@ body {
 	height: 100%;
 }
 
-.landing {
+.intro {
 	width: 100%;
+	height:100%;
 	flex: 1;
 	display: flex;
   	align-items: center;
@@ -41,7 +43,7 @@ body {
 }
 
 /*.tk-proxima-nova and .tk-adelle*/
-.landing h1 {
+.intro h1 {
 	font-size: 4em;
 	text-align: center;
 	color: #E8F8FF;
@@ -60,18 +62,23 @@ body {
 
 .what-listen h2{
 	align-self: flex-start;
-	font-size:3em;
+	font-size: 2.6em;
 	color: #E8F8FF;
+	padding-bottom: 0.5em;
 }
 
 
 .has-podcasts h3{
 	color: #E8F8FF;
 	font-size: 2em;
+	font-family: adelle;
+	font-weight: 500;
 }
 .new-to-podcasts h3{
 	color: #E8F8FF;
 	font-size: 2em;
+	font-family: adelle;
+	font-weight: 500;
 }
 
 .btn {
@@ -100,28 +107,28 @@ body {
 	display: flex;
 	flex-direction:column;
 	width:100%;
+	height:100%;
 }
 .list-header {
-	height: 8.5em;
-}
-.list-header p {
+	height: 2.5em;
+	font-family: "proxima-nova"
+	font-size: 2.5em;
+    line-height: 3em;
 	width: 100%;
     text-align: center;
 	justify-content: center;
 	align-self: flex-start;
-	font-size: 2.5em;
-    line-height: 1em;
 	color: #E8F8FF;
+
 }
 
-.like {
+.pick-show {
 	font-family: "adelle";
-	background: #FFFDB8;
+	list-style-type: none;
+	color: #E8F8FF;	
 	border: 1.5px solid #fff;
-	color: #F74E2F;
 	border-radius:5px;
 	padding:6px;
-	margin:6px;
 	width: 90%;
     text-align: center;
     height: 3em;
@@ -130,13 +137,41 @@ body {
     cursor: pointer;
     max-width: 550px;
     min-width: 300px;
-	font-size: 1.2em;
+	font-size: 1.2em;	
+
+}
+
+.find {
+
+	font-family: "adelle";
+	list-style-type: none;
+	color: #35BAF0;	
+	border: 1.5px solid #fff;
+	border-radius:5px;
+	padding:6px;
+	margin:15px 0 0 0;
+	width: 100%;
+    text-align: center;
+    height: 3em;
+    line-height: 3em;
+    margin: 40px auto 6px auto;
+    cursor: pointer;
+	background: #E8F8FF;
+    min-width: 300px;
+	font-size: 1.2em;	
+}
+
+.pick-show.like {
+	background: #FFFDB8;
+	color: #F74E2F;
+	border: 2px solid #F7924C;
 
 }
 
 .like ul {
 	justify-content: center;
 }
+
 
 .swipe-container {
 	display: flex;
