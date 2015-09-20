@@ -110,7 +110,7 @@
           <ul>
             {{#each shows}}
               <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">
-              <a href=""><img src="{{url}}" alt="icon" width="60" height="auto"/></a>
+              <a href=""><img src="{{ url }}" alt="icon" width="60" height="auto"/></a>
               <p>{{ name }}</p>
               </li>
             {{/each}}
