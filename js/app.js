@@ -22,16 +22,65 @@ var shows = [
 // Main template
 var ractive = new Ractive({
   makeCards: function() {
-    var cards;
-    setTimeout(function() {
-      cards = [].slice.call(document.querySelectorAll('.stack li'));
-    }, 1000);
-    var stack = gajus.Swing.Stack();
+    var cards=[];
 
-    cards.forEach(function(targetElement) {
-      stack.createCard(targetElement);
-    });
-    console.log(cards);
+    var loadCheck = function(){
+      console.log("checking")
+      cards = document.querySelectorAll('.stack li')
+      var files = []
+
+      if(cards.length < files.length ){
+        setTimeout(loadCheck, 200)
+      }
+      else{
+        cards = [].slice.call(document.querySelectorAll('ul li'))
+
+        var stack = gajus.Swing.Stack();
+
+        cards.forEach(function(targetElement,index) {
+          stack.createCard(targetElement);
+          files[cards.length - index - 1] = ($(cards[index]).attr("audiourl"))
+        });
+
+
+
+        var suggestions = [];
+
+        for (var i=0; i < files.length; i++) {
+          var sound = new Howl({
+            urls:[files[i]]
+          });
+          suggestions.push(sound);
+        }
+        var current = 0;
+        suggestions[current].play();
+        // $('.find').on('click', function() {
+        //   console.log('here');
+        //
+        // });
+
+        stack.on('throwout', function(e) {
+          var index = cards.indexOf(e.target);
+          var card = cards.splice(index)[0];
+
+          $(card).fadeOut(100, function() {
+            $(card).remove();
+          });
+          suggestions[current].unload()
+          current +=1;
+          if(current< suggestions.length){
+            suggestions[current].play()
+          }
+          // suggestions[current].unload();
+          // current++;
+          // if (current < suggestions.length) {
+          //   suggestions[current].play();
+          // }
+        });
+      }
+    }
+    setTimeout(loadCheck, 200);
+
   },
   el: '#container',
   template: '#template',
@@ -61,8 +110,10 @@ ractive.observe('state', function(newValue, old, key) {
             user.saveFetch();
         }
         if (newValue === 'suggest') {
-            console.log(true);
-            this.makeCards();
+            setTimeout(function(){
+              this.makeCards();
+            }.bind(this),2000)
+
         }
     }
 });

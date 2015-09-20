@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://use.typekit.net/nml8ndz.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
@@ -50,18 +50,20 @@
             <div  class="swipe-container" on-swipe="processSuggestion">
               <div id="viewport">
                 <ul class="stack">
-                    <li class="swiping">
-                      <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
-                      <p>Show: podcast</p>
-                      <p>Episode: description</p>
-                    </li>
+                    {{#each user.suggestions}}
+                      <li class="swiping" audioUrl="{{excerpt_url}}">
+                        <img src = {{podcast_image_url}}>
+                        <p>Show: {{ podcast }}</p>
+                        <p>Episode: {{description}}</p>
+                      </li>
+                    {{/each}}
                 </ul>
             </div>
-            
+
               <p>{{count}}/3 episodes selected</p>
 
               <div class="centered-container">
-                <div class="show-episode-list btn" >
+                <div class="show-episode-list btn" on-tap="setState:list" >
                   <h3>Your New Episodes</h3>
                 </div>
               </div>
@@ -106,7 +108,7 @@
           <ul>
             {{#each shows}}
               <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">
-              <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>              
+              <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
               <p>{{ name }}</p>
               </li>
             {{/each}}
@@ -133,7 +135,7 @@
           <i class="fa fa-chevron-left"></i>
           <h2>SoundBits</h2>
         </div>
-      
+
       <div class="queue-container">
         <div class="queue-header">
           <h2>Your List</h2>
