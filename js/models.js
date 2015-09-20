@@ -68,16 +68,20 @@ var User = Backbone.Model.extend({
     return this.get('currentSuggestion');
   },
 
-  // Save episodes
-  saveEpisodes: function() {
-    var e = this.get('episodes');
+  // Save episodes addition
+  saveEpisode: function(episode) {
+    Backbone.sync('create', undefined, {
+      url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/add_episode.json',
+      attrs: { episode_id: episode.id }
+    });
+  },
 
-    if (e && e.length > 0) {
-      Backbone.sync('update', undefined, {
-        url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/episodes.json',
-        attrs: this.get('episodes')
-      });
-    }
+  // Save rejection addition
+  saveRejection: function(episode) {
+    Backbone.sync('create', undefined, {
+      url: 'https://soundbits.herokuapp.com/users/' + this.get('id') + '/add_rejection.json',
+      attrs: { episode_id: episode.id }
+    });
   }
 });
 

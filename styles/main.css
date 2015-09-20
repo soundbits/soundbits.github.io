@@ -3,6 +3,20 @@ body { margin:0; padding:0; font-size:100%; line-height:1; }
 html, body {
   height: 100%;
   font-family: "proxima-nova";
+  background-color: #35BAF0 !important;
+
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+p {
+	font-family: "adelle";
 }
 
 ul {
@@ -22,24 +36,36 @@ h2 {
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
-}
+
 
 body {
-	background: #35BAF0;
 	font-family: "proxima-nova";
 	font-size: 16px;
 	display: flex;
 	height: 100%;
 }
 
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:100%;
+}
+
+.app-header {
+	color: #35BAF0;
+	background: #fff; 
+	width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-family:"proxima-nova";
+    -webkit-padding-before: .5em;
+    -webkit-padding-after: .5em;
+}
+
 .intro {
 	width: 100%;
 	height:100%;
-	flex: 1;
-	display: flex;
-  	align-items: center;
-  	justify-content: center;
-
 }
 
 /*.tk-proxima-nova and .tk-adelle*/
@@ -54,6 +80,7 @@ body {
 .user-type {
 	display: flex;
 	width:100%;
+	height:85%;
 	justify-content: center;
 	align-items: center;
 	flex-direction:column;
@@ -82,6 +109,7 @@ body {
 }
 
 .btn {
+	color: #fff;
 	border: 1.5px solid #fff;
 	border-radius:5px;
 	padding:6px;
@@ -98,13 +126,15 @@ body {
 
 .btn:active{
 	background: #FFFDB8;
+	color: #F74E2F;	
 	/*border: 2px solid #fff;*/
     /*box-shadow: 0px 0px 3px #333;*/
 }
 
 #container {
 	background: #35BAF0;
-	display: flex;
+	display: none;
+	/*display: flex;*/
 	flex-direction:column;
 	width:100%;
 	height:100%;
@@ -199,6 +229,124 @@ body {
 	line-height: 1.5em;
 	color: #fff;
 	text-align: center;
+}
+
+.find {
+	font-family: "adelle";
+	list-style-type: none;
+	color: #35BAF0;	
+	border: 1.5px solid #fff;
+	border-radius:5px;
+	padding:6px;
+	margin:15px 0 0 0;
+	width: 100%;
+    text-align: center;
+    height: 3em;
+    line-height: 3em;
+    margin: 40px auto 6px auto;
+    cursor: pointer;
+	background: #E8F8FF;
+    min-width: 300px;
+	font-size: 1.2em;	
+}
+
+.queue-header {
+	height: 2.5em;
+	font-family: "proxima-nova"
+	font-size: 2.5em;
+    line-height: 3em;
+    width: 100%;
+    text-align: left;
+    justify-content: center;
+    align-self: flex-start;
+    color: #E8F8FF;
+}
+
+.fa.fa-chevron-left {
+	margin-left: 6px;
+}
+.queue-header h2 {
+	display: inline-block;
+    margin-left: 12px;
+}
+.queued-shows {
+	display: inline-block;
+	font-family: "adelle";
+    font-size: 1em;
+    list-style-type: none;
+    color: #E8F8FF;
+    border: 1.5px solid #fff;
+    padding: 6px;
+    width: 100%;
+    text-align: right;
+    height: 60px;
+    margin: 3px auto 3px auto;
+    cursor: pointer;
+    min-width: 300px;
+	margin-left:0px;
+	padding-left:0px;
+	border-left: none;
+	border-right: none;
+
+}
+
+.queued-shows img {
+	float: left;
+	vertical-align: middle;
+}
+
+.queued-shows p {
+	display: table-cell;
+	text-align: right;
+	padding: 15px;
+    text-overflow: ellipsis;
+  	width: 200px;
+  	white-space: nowrap;
+}
+
+.export {
+    list-style-type: none;
+    color: #E8F8FF;
+    border: 1.5px solid #fff;
+    padding: 6px;
+    width: 100%;
+    text-align: center;
+    height: 75px;
+    margin: 20px auto 6px auto;
+    cursor: pointer;
+    min-width: 300px;
+    margin-left: 0px;
+    padding-left: 0px;
+    border-left: none;
+    border-right: none;
+    position: fixed;
+    bottom: 5%;
+
+}
+
+.export-button  {
+    -webkit-transition: background .1s;
+    transition: background .1s;
+
+}
+
+.export:active {
+	background: #FFFDB8;
+  	color: #35BAF0;
+}
+
+.export-container p {
+	left: 10px;
+	font-family: "proxima-nova";
+    font-size: 1.5em;	
+    line-height: 2em;
+    vertical-align: baseline;
+    font-weight: bold;
+
+}
+
+.fa.fa-headphones  {
+	font-size: 1.2em;
 }
 
 .reset {

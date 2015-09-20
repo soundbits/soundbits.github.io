@@ -87,15 +87,19 @@ ractive.on('selectShow', function(event, id) {
 // Process a swipe suggestion
 ractive.on('processSuggestion', function(event) {
 	var user = this.get('user');
+	var c = this.get('user.currentSuggestion');
 
+	// Swipe right (good)
 	if (event.original.direction == 4) {
-		// swipe right
-		this.push('user.episodes', this.get('user.currentSuggestion'));
+		this.push('user.episodes', c);
+		user.saveEpisode(c);
 	}
+	// Swipe left (bad)
 	else if (event.original.direction == 2) {
-		// swipe left
-		this.push('user.rejections', this.get('user.currentSuggestion'));
+		this.push('user.rejections', c);
+		user.saveRejection(c);
 	}
+	// Bad swipe
 	else {
 		return;
 	}
@@ -104,7 +108,4 @@ ractive.on('processSuggestion', function(event) {
 	if (!user.getNewSuggestion()) {
 		this.set('state', 'list');
 	}
-
-	// Save the user episodes
-	user.saveEpisodes();
 });
