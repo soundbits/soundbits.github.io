@@ -211,3 +211,34 @@ body {
 .reset button {
   width: auto;
 }
+
+.swiping img {
+	width: 100%;
+}
+
+#viewport {
+	position: relative;
+}
+
+#viewport .stack {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#viewport li {
+    width: 300px;
+    height: 400px;
+    list-style: none;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    font-size: 1em;
+    border: 10px solid #ECECEC;
+    box-sizing: border-box;
+    cursor: default;
+}
