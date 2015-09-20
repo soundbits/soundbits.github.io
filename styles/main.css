@@ -52,6 +52,26 @@ body {
     font-family:"proxima-nova";
     -webkit-padding-before: .5em;
     -webkit-padding-after: .5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+}
+
+.app-header h2 {
+    width: 100%;
+    margin-left: -43px;
+}
+
+
+.logo {
+    background-image: url("/imgs/penguin-blue.png");
+    height: 32px;
+    width: 43px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 0 1 auto;
 }
 
 .intro {
