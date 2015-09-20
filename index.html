@@ -108,7 +108,7 @@
           <ul>
             {{#each shows}}
               <li class="pick-show {{#like}}like{{/like}}" on-tap="selectShow:{{ id }}">
-              <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
+              <a href=""><img src="{{url}}" alt="icon" width="60" height="auto"/></a>
               <p>{{ name }}</p>
               </li>
             {{/each}}
@@ -116,7 +116,7 @@
 
           {{#if (_.filter(shows, 'like').length) }}
             <div class="find">
-              <p on-tap="setState:suggest">Now Go Play!</p>
+              <p on-tap="setState:suggest">Now go play!</p>
               <i class="fa fa-chevron-right"></i>
             </div>
           {{/if}}

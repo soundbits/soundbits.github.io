@@ -9,14 +9,14 @@ var user = new User();
 // Shows that you like.
 // TODO: these come from somewhere else
 var shows = [
-    { id: 1, like: false, name: 'This American Life' },
-    { id: 2, like: false, name: 'Reply All' },
-    { id: 3, like: false, name: '99% Invisible' },
-    { id: 4, like: false, name: 'Radiolab' },
-    { id: 5, like: false, name: 'Morning Edition' },
-    { id: 6, like: false, name: 'Fresh Air' },
-    { id: 7, like: false, name: 'Star Talk' },
-    { id: 8, like: false, name: 'On the Media' }
+    { id: 1, like: false, name: 'This American Life', url:"/imgs/TALLogo.png" },
+    { id: 2, like: false, name: 'Reply All', url:"/imgs/ReplyAllLogo.jpg" },
+    { id: 3, like: false, name: '99% Invisible', url:"/imgs/99InvisibleLogo.jpg" },
+    { id: 4, like: false, name: 'Radiolab', url:"/imgs/RadiolabLogo.jpg" },
+    { id: 5, like: false, name: 'Morning Edition', url:"/imgs/MorningEditionLogo.jpg" },
+    { id: 6, like: false, name: 'Fresh Air', url:"/imgs/FreshAirLogo.png" },
+    { id: 7, like: false, name: 'Star Talk', url:"/imgs/StarTalkLogo.jpg" },
+    { id: 8, like: false, name: 'On the Media', url:"/imgs/OTMLogo.jpg" }
 ];
 
 // Main template
