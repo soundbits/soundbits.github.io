@@ -5,6 +5,10 @@ html, body {
   font-family: "proxima-nova";
 }
 
+p {
+	font-family: "adelle";
+}
+
 ul {
 	display: block;
     list-style-type: disc;
@@ -22,7 +26,7 @@ h2 {
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
-}
+
 
 body {
 	background: #35BAF0;
@@ -36,16 +40,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height:100%;
+}
+
+.app-header {
+	color: #35BAF0;
+	background: #fff; 
+	width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-family:"proxima-nova";
+    -webkit-padding-before: .5em;
+    -webkit-padding-after: .5em;
 }
 
 .intro {
 	width: 100%;
 	height:100%;
-	flex: 1;
-	display: flex;
-  	align-items: center;
-  	justify-content: center;
-
 }
 
 /*.tk-proxima-nova and .tk-adelle*/
@@ -60,6 +71,7 @@ body {
 .user-type {
 	display: flex;
 	width:100%;
+	height:85%;
 	justify-content: center;
 	align-items: center;
 	flex-direction:column;
