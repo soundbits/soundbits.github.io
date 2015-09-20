@@ -30,7 +30,6 @@
 
       {{#if (state === 'list')}}
         <div class = "list-container">
-          <p>Here is your list!</p>
           <div class="list-header">{{ podcast }}</div>
 
           <div class = "podcast-list">{{ description }}</div>
@@ -41,7 +40,11 @@
         <p>Here are some suggestions!</p>
 
         {{#user.currentSuggestion}}
-          <div on-swipe="processSuggestion">
+          <div  class="swipe-container" on-swipe="processSuggestion">
+            <div class="podcast-image">
+              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+            </div>
+            
             <p>Show: {{ podcast }}</p>
             <p>Episode: {{ description }}</p>
           </div>
@@ -96,10 +99,13 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
+      /*
       var sound = new Howl({
         urls: ['../intro.mp3'],
         autoplay: true
       });
+      */
+
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];

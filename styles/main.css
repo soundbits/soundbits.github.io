@@ -14,6 +14,15 @@ ul {
     -webkit-padding-start: 0px;
 }
 
+h2 {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+}
+
 body {
 	background: #35BAF0;
 	font-family: "proxima-nova";
@@ -26,7 +35,6 @@ body {
 	width: 100%;
 	flex: 1;
 	display: flex;
-	display:none;
   	align-items: center;
   	justify-content: center;
 
@@ -37,13 +45,12 @@ body {
 	font-size: 4em;
 	text-align: center;
 	color: #E8F8FF;
-	line-height: 3em;	
+	line-height: 3em;
 
 }
 
 .user-type {
-	display:none;
-	/*display: flex;*/
+	display: flex;
 	width:100%;
 	justify-content: center;
 	align-items: center;
@@ -54,21 +61,21 @@ body {
 .what-listen h2{
 	align-self: flex-start;
 	font-size:3em;
-	color: #E8F8FF;	
+	color: #E8F8FF;
 }
 
 
 .has-podcasts h3{
 	color: #E8F8FF;
 	font-size: 2em;
-} 
+}
 .new-to-podcasts h3{
-	color: #E8F8FF;	
+	color: #E8F8FF;
 	font-size: 2em;
 }
 
 .btn {
-	border: 1.5px solid #fff; 
+	border: 1.5px solid #fff;
 	border-radius:5px;
 	padding:6px;
 	margin:6px;
@@ -89,6 +96,7 @@ body {
 }
 
 #container {
+	background: #35BAF0;
 	display: flex;
 	flex-direction:column;
 	width:100%;
@@ -103,12 +111,13 @@ body {
 	align-self: flex-start;
 	font-size: 2.5em;
     line-height: 1em;
-	color: #E8F8FF;	
+	color: #E8F8FF;
 }
 
 .like {
+	font-family: "adelle";
 	background: #FFFDB8;
-	border: 1.5px solid #fff; 
+	border: 1.5px solid #fff;
 	color: #F74E2F;
 	border-radius:5px;
 	padding:6px;
@@ -129,3 +138,30 @@ body {
 	justify-content: center;
 }
 
+.swipe-container {
+	display: flex;
+	flex-direction:column;
+	width: 100%;
+
+}
+.podcast-image img {
+	width: 100%;
+	height: auto;
+	flex: 1;
+}
+.swipe-header {
+	top:0px;
+	margin:auto;
+	width:100%;
+	background: #35BAF0;
+	height: 5em;
+}
+
+.swipe-header h2 {
+	font-family: "proxima-nova";
+	font-size: 3em;
+	letter-spacing: .1em;
+	line-height: 1.5em;
+	color: #fff;
+	text-align: center;
+}
