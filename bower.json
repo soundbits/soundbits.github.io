@@ -22,6 +22,7 @@
     "ractive-backbone": "~0.3.0",
     "ractive-events-tap": "~0.2.0",
     "ractive-touch": "~0.4.0",
+    "swing": "~3.0.2",
     "underscore": "~1.8.3"
   }
 }

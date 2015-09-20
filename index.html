@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">    
     <script src="https://use.typekit.net/nml8ndz.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
@@ -18,7 +18,7 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+<!-- 
     <div id="container"></div>
 
     <script id="template" type="text/ractive">
@@ -68,6 +68,38 @@
       {{/if}}
 
       {{#if (state === 'intro')}}
+      <div id="viewport">
+        <ul class="stack">
+            <li class="clubs swiping">
+              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+
+              <p>Show: This American Life</p>
+              <p>Episode: A great show</p>
+            </li>
+            <li class="diamonds swiping">
+              <div class="podcast-image">
+                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+              </div>
+
+              <p>Show: This American Life</p>
+              <p>Episode: A great show</p>
+            </li>
+            <li class="hearts swiping">
+              <div class="podcast-image">
+                <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+              </div>
+
+              <p>Show: This American Life</p>
+              <p>Episode: A great show</p>
+            </li>
+            <li class="spades swiping">
+              <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
+
+              <p>Show: This American Life</p>
+              <p>Episode: A great show</p>
+            </li>
+        </ul>
+    </div>
         <div class="intro">
           <div class="centered-container">
             <div class="app-header">
@@ -113,10 +145,44 @@
         </div>
       {{/if}}
 
+
       <div class="reset">
         <button on-tap="resetLocal">Reset</button>
       </div>
     </script>
+ -->
+
+      <div class="queue-container">
+        <div class="queue-header">
+          <i class="fa fa-chevron-left"></i>
+          <h2>Your List</h2>
+        </div>
+            <ul class="queue-list">
+              <li class = "queued-shows">
+                <a href=""><img src="https://farm4.staticflickr.com/3922/14844658675_2c291f4d29_z.jpg" alt="icon" width="60" height="auto"/></a>
+                <p>This American Life: Doppelgängers</p>
+              </li>
+ <!--              <li class = "queued-shows">
+                <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
+              <p>Planet Money: The Hydrox Revolution</p>
+              </li> -->
+              <li class = "queued-shows">
+                <a href=""><img src="https://pbs.twimg.com/profile_images/535929052171739136/Z59s1XPU.jpeg" alt="icon" width="60" height="auto"/></a>
+              <p>Reply All: Today’s the Day</p>
+              </li>
+              <li class = "queued-shows">
+                <a href=""><img src="https://gimletmedia.com/wp-content/uploads/2015/04/Mystery-Logo.jpg" alt="icon" width="60" height="auto"/></a>
+              <p>Mystery Show: Case #3 Belt Buckle</p>
+              </li>
+            </ul>
+      </div>
+
+      <div class="export">
+        <div class = "export-container">
+        <p>Play On Your Podcast App</p>
+        <i class="fa fa-headphones"></i>
+        </div>
+      </div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
@@ -127,31 +193,54 @@
     <script src="bower_components/hammerjs/hammer.min.js"></script>
     <script src="bower_components/ractive-touch/index.js"></script>
     <script src="bower_components/howler.js/howler.min.js"></script>
+    <script src="bower_components/swing/dist/browser/swing.js"></script>
     <script src="js/models.js"></script>
     <script src="js/app.js"></script>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
-      var files = ['../sufjan.mp3', '../intro.mp3'];
-      var suggestions = [];
+      $(document).ready(function() {
+          var files = ['../sufjan.mp3', '../intro.mp3'];
+          var suggestions = [];
 
-      for (var i=0; i < files.length; i++) {
-        var sound = new Howl({
-          urls:[files[i]]
-        });
-        suggestions.push(sound);
-      }
+          for (var i=0; i < files.length; i++) {
+            var sound = new Howl({
+              urls:[files[i]]
+            });
+            suggestions.push(sound);
+          }
 
-      var current = 0;
-      suggestions[current].play();
-
-      $('.btn').on('click', function(e) {
-        suggestions[current].unload();
-        current++;
-        if (current < suggestions.length) {
+          var current = 0;
           suggestions[current].play();
-        }
+
+          var stack,
+              cards;
+
+          cards = [].slice.call(document.querySelectorAll('.stack li'));
+
+          stack = gajus.Swing.Stack();
+
+          cards.forEach(function(targetElement) {
+            stack.createCard(targetElement);
+          });
+
+          stack.on('dragstart', function(e) {
+            console.log(cards);
+          });
+
+          stack.on('throwout', function(e) {
+            var index = cards.indexOf(e.target);
+            var card = cards.splice(index)[0];
+            $(card).fadeOut(100, function() {
+              $(card).remove();
+            });
+            suggestions[current].unload();
+            current++;
+            if (current < suggestions.length) {
+              suggestions[current].play();
+            }
+          });
       });
 
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
