@@ -341,7 +341,7 @@ body {
 
 .episode-count {
 	padding-bottom: .7em;
-    padding-top: .7em;
+    padding-top: 483px;
     text-align: center;
     color: #fff;
 }
@@ -456,6 +456,13 @@ body {
 
 .swiping img {
 	width: 100%;
+}
+
+.swiping p {
+	font-family: "adelle";
+	font-size: 1em;
+	line-height: 1.5em;
+	color: #666;
 }
 
 #viewport {
