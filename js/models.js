@@ -62,6 +62,7 @@ var User = Backbone.Model.extend({
 
   // Get a new suggestion, shifting it from the suggestions array
   getNewSuggestion: function() {
+    console.log('loading');
     var s = this.get('suggestions');
     this.set('currentSuggestion', s.shift());
     this.set('suggestions', s);
