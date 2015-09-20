@@ -113,10 +113,27 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site""s ID. -->
     <script>
-      var sound = new Howl({
-        urls: ['../intro.mp3'],
-        autoplay: true
+      var files = ['../sufjan.mp3', '../intro.mp3'];
+      var suggestions = [];
+
+      for (var i=0; i < files.length; i++) {
+        var sound = new Howl({
+          urls:[files[i]]
+        });
+        suggestions.push(sound);
+      }
+
+      var current = 0;
+      suggestions[current].play();
+
+      $('.btn').on('click', function(e) {
+        suggestions[current].unload();
+        current++;
+        if (current < suggestions.length) {
+          suggestions[current].play();
+        }
       });
+
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
