@@ -478,10 +478,14 @@ body {
 }
 
 .reset {
-  padding-top: 3em;
-  margin-bottom: 1em;
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+  padding-top: 0em;
+  margin-bottom: 2px;
   text-align: right;
-  padding-right: 1em;
+  padding-right: 2px;
+  opacity: .5;
 }
 
 .reset button {

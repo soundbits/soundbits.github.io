@@ -4,8 +4,8 @@
 
 // User and preferences model
 
-// host = "https://soundbits.herokuapp.com"
-host = "http://localhost:3000"
+host = "https://soundbits.herokuapp.com"
+// host = "http://localhost:3000"
 var User = Backbone.Model.extend({
   url: function() {
     return (this.get('id')) ? host+'/users/' + this.get('id') + '.json' :
