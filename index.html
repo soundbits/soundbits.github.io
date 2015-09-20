@@ -18,7 +18,7 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-<!-- 
+
     <div id="container"></div>
 
     <script id="template" type="text/ractive">
@@ -54,13 +54,13 @@
                 <img src = "https://store.thisamericanlife.org/v/vspfiles/photos/RADIO-SHIRT-2.jpg">
               </div>
 
-              <p>Show: {{ podcast }}</p>
-              <p>Episode: {{ description }}</p>
-              <p>{{count}}/3 episodes selected</p>
-              <div class="centered-container">
-                <div class="show-episode-list btn" >
-                  <h3>Your New Episodes</h3>
-                </div>
+              <p class="episode-description">{{ podcast }} - {{ description }}</p>
+              <p class="episode-count"> <b>0{{count}}/3</b><br>Selections</p>
+               <div class="export">
+                  <div class = "export-container">
+                    <p>Your New Episodes</p>
+                    <i class="fa fa-headphones"></i>
+                  </div>
               </div>
             </div>
           {{/user.currentSuggestion}}
@@ -150,7 +150,8 @@
         <button on-tap="resetLocal">Reset</button>
       </div>
     </script>
- -->
+
+<!--
 
       <div class="queue-container">
         <div class="queue-header">
@@ -162,11 +163,12 @@
                 <a href=""><img src="https://farm4.staticflickr.com/3922/14844658675_2c291f4d29_z.jpg" alt="icon" width="60" height="auto"/></a>
                 <p>This American Life: Doppelgängers</p>
               </li>
+            -->
  <!--              <li class = "queued-shows">
                 <a href=""><img src="http://media.npr.org/images/podcasts/primary/icon_510289-d5d79b164ba7670399f0287529ce31a94523b224-s300-c85.jpg" alt="icon" width="60" height="auto"/></a>
               <p>Planet Money: The Hydrox Revolution</p>
               </li> -->
-              <li class = "queued-shows">
+<!--              <li class = "queued-shows">
                 <a href=""><img src="https://pbs.twimg.com/profile_images/535929052171739136/Z59s1XPU.jpeg" alt="icon" width="60" height="auto"/></a>
               <p>Reply All: Today’s the Day</p>
               </li>
@@ -183,7 +185,7 @@
         <i class="fa fa-headphones"></i>
         </div>
       </div>
-
+-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone-min.js"></script>
