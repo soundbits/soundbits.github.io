@@ -68,6 +68,11 @@ var ractive = new Ractive({
             suggestions[current].play()
           }
         });
+
+        stack.on('throwoutright', function(e) {
+          console.log(ractive.get('selections'));
+          ractive.set('selections', ractive.get('selections') + 1);
+        });
       }
     }
     setTimeout(loadCheck, 200);
@@ -76,6 +81,7 @@ var ractive = new Ractive({
   el: '#container',
   template: '#template',
   data: {
+        selections: 0,
         user: user,
         shows: shows,
     state: 'intro',
