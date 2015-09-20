@@ -335,13 +335,13 @@ body {
     padding-top: .3em;
     text-align: center;
     transition: all 1s;
-    font-size: 3em;
+    font-size: 2.1em;
 
 }
 
 .episode-count {
 	padding-bottom: .7em;
-    padding-top: 483px;
+    padding-top: 447px;
     text-align: center;
     color: #fff;
 }
@@ -473,7 +473,7 @@ body {
     width: 200px;
     height: 300px;
     position: absolute;
-    top: 100px;
+    top: 40px;
     left: 50%;
     margin-left: -150px;
 }
